@@ -25,3 +25,5 @@ app.listen(dbConfig.port, () => {
 app.get('/', (req,res) => {
     res.send('SLT!');
 });
+
+app.post('/api/v1/product/create', clientController.createClient);
