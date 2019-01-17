@@ -1,0 +1,19 @@
+{
+  "name": "tpnode2",
+  "version": "1.0.0",
+  "description": "TP NodeJs Eskander Haller",
+  "main": "app.js",
+  "dependencies": {
+    "cores": "^0.8.5",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.4",
+    "nodemon": "^1.18.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Eskander Haller",
+  "license": "ISC"
+}

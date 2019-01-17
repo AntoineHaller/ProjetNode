@@ -1,0 +1,13 @@
+npm install nodemon --save
+
+npm install express --save
+npm  i cores
+
+site mLab pour la database
+npm install mongoose --save
+
+// Comment on cable nos api sur du front :
+npm install -g @vue/cli
+vue create hello-world
+cd hello-world
+npm run serve
