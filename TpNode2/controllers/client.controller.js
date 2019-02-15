@@ -27,3 +27,36 @@ exports.createClient = function (req,res) {
         res.send(client);
     });
 };
+
+exports.creationFacture = function () {
+    const date = new Date();
+
+    const fs = require('fs');
+
+    fs.mkdir('factures', (err) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log('Repository created');
+        }
+    });
+
+    fs.appendFile('./factures/factureClient.txt', `Facture: F+, Infos client:, Date: ${date}, Prestation fournie:, Nombre d'heures facturées:, Coût horaire:, Coût total HT:, TVA:, Taux de TVA:, Total TTC:.`, (err) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log('facture créééeer')
+        }
+    });
+
+    fs.appendFile('./factures&log/log.log', `Date: ${date} -- Client: Nom`, (err) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log('log créééeer')
+        }
+    });
+};
