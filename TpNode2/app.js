@@ -30,3 +30,17 @@ app.get('/', (req,res) => {
 app.post('/api/v1/client/create', clientController.createClient, salesController.createSales);
 
 app.get('/api/v1/client/create', clientController.creationFacture);
+
+app.get('/api/v1/client', clientController.getProduct);
+
+app.get('/api/v1/deleteManyClient/:name', clientController.removeManyProduct);
+
+app.get('/api/v1/deleteClient/:id', clientController.removeProduct);
+
+app.get('/api/v1/client/:id', clientController.findById);
+
+app.put('/api/v1/updateManyClient/:name', clientController.updateManyProduct);
+
+app.put('/api/v1/updateClient/:id', clientController.updateProduct);
+
+app.post('/api/v1/product/calculationTax', clientController.calculateTaxe);
