@@ -7,12 +7,9 @@ let ClientSchema = new Schema (
         address: String,
         cp: Number,
         ville: String,
-        referent: new ReferentContact(
-		{
-			nom: req.body.refnom,
-			prenom: req.body.refprenom,
-			poste: req.body.refposte
-		},
+		refnom: String,
+		refprenom: String,
+		refposte: String,
         telephone: Number,
         mail: String,
         prospet: Boolean
