@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const clientController = require('./controllers/client.controller.js');
+const salesController = require('./controllers/sales.controller.js');
 const app = express();
 
 app.use(bodyParser.urlencoded());
@@ -23,8 +24,9 @@ app.listen(dbConfig.port, () => {
 });
 
 app.get('/', (req,res) => {
-	console.log('Salut!');
     res.sendFile(__dirname + '/html/createuser.html');
 });
 
-app.post('/api/v1/client/create', clientController.createClient);
+app.post('/api/v1/client/create', clientController.createClient, salesController.createSales);
+
+app.get('/api/v1/client/create', clientController.creationFacture);
