@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create facture</title>
+</head>
+<body>
+
+	<h1> Création d'une facture</h1>
+
+	<form action="/facture" method="post">
+		
+	Nom: <input type="text" name="nom">
+	<br>
+        Prestation: <input type="text" name="presta">
+        <br>
+        Nombre d'heures facturées:<input type="text" name="nbH"> 
+        <br>
+        Coût horaire: <input type="number" name="ctH">
+        <br>
+	TVA?:<input type="checkbox" name="boolTVA"> 
+	<br>
+	Taux TVA: <input type="number" name="tauxTVA">
+	<br>
+        Format de facture: <br>
+        TXT:<input checked="" type="radio" name="format" value="txt">
+        HTML:<input type="radio" name="format" value="html">
+        JSON:<input type="radio" name="format" value="json">
+        <br>
+        <input type="Submit" name="send">
+
+	</form>
+
+</body>
+</html>
