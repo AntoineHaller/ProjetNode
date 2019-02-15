@@ -23,7 +23,8 @@ app.listen(dbConfig.port, () => {
 });
 
 app.get('/', (req,res) => {
-    res.send('SLT!');
+	console.log('Salut!');
+    res.sendFile(__dirname + '/html/createuser.html');
 });
 
-app.post('/api/v1/product/create', clientController.createClient);
+app.post('/api/v1/client/create', clientController.createClient);
