@@ -1,10 +1,9 @@
 {
-  "name": "tpnode2",
+  "name": "rendu_node_2",
   "version": "1.0.0",
-  "description": "TP NodeJs Eskander Haller",
+  "description": "TP node JS ESKANDER HALLER",
   "main": "app.js",
   "dependencies": {
-    "cores": "^0.8.5",
     "express": "^4.16.4",
     "mongoose": "^5.4.4",
     "nodemon": "^1.18.9"
@@ -12,8 +11,11 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "facture": "nodemon appfac.js",
+    "clean_log": "nodemon appclean.js",
+    "get_ca": "nodemon appCA.js"
   },
-  "author": "Eskander Haller",
+  "author": "LES PLUS FOR",
   "license": "ISC"
 }

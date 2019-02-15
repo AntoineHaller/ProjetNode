@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const clientController = require('./controllers/client.controller.js');
-const salesController = require('./controllers/sales.controller.js');
 const app = express();
 
 app.use(bodyParser.urlencoded());
@@ -25,22 +24,18 @@ app.listen(dbConfig.port, () => {
 
 app.get('/', (req,res) => {
     res.sendFile(__dirname + '/html/createuser.html');
-});
+	});
 
-app.post('/api/v1/client/create', clientController.createClient, salesController.createSales);
+app.post('/', clientController.createClient);
 
-app.get('/api/v1/client/create', clientController.creationFacture);
+app.get('/api/v1/client', clientController.getClient);
 
-app.get('/api/v1/client', clientController.getProduct);
+app.get('/api/v1/deleteManyClient/:name', clientController.removeManyClient);
 
-app.get('/api/v1/deleteManyClient/:name', clientController.removeManyProduct);
-
-app.get('/api/v1/deleteClient/:id', clientController.removeProduct);
+app.get('/api/v1/deleteClient/:id', clientController.removeClient);
 
 app.get('/api/v1/client/:id', clientController.findById);
 
-app.put('/api/v1/updateManyClient/:name', clientController.updateManyProduct);
+app.put('/api/v1/updateManyClient/:name', clientController.updateManyClient);
 
-app.put('/api/v1/updateClient/:id', clientController.updateProduct);
-
-app.post('/api/v1/product/calculationTax', clientController.calculateTaxe);
+app.put('/api/v1/updateClient/:id', clientController.updateClient);
