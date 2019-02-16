@@ -19,6 +19,21 @@ exports.createFacture = function (req,res) {
 
     const fs = require('fs');
 
+    let lastnfacture = 2;
+
+    Facture.find().sort({ _id: -1 }).limit(1).exec(function (err, lastFacture) {
+
+    lastnfacture = (lastFacture[0].nfacture) + 1;
+
+    console.log('Voici lastFacture[0]');
+    console.log(lastFacture[0]);
+    console.log('Voici lastFacture[0].nfacture');
+    console.log(lastFacture[0].nfacture);
+    console.log('Voici lastnfacture');
+    console.log(lastnfacture);
+
+    });
+
     //Création du dossier et du fichier RESTE A FAIRE L'INCREMENTATION DU NUMERO DE FACTURE
     fs.mkdir(`invoices/${req.body.nom}`, { recursive: true }, (err) => {
         if (err) {
@@ -26,7 +41,7 @@ exports.createFacture = function (req,res) {
         }
     });
 
-    fs.appendFile(`./invoices/${req.body.nom}/F0001.${req.body.format}`, `Facture: F0001, Infos client: ${req.body.nom}, Date: ${date}, Prestation fournie:${req.body.presta}, Nombre d'heures facturées:${req.body.nbH}, Coût horaire:${req.body.ctH}, Coût total HT:${totalHT}, TVA:${req.body.boolTVA}, Taux de TVA:${req.body.tauxTVA}, Total TTC:${totalTTC} ---`, (err) => {
+    fs.appendFile(`./invoices/${req.body.nom}/F${lastnfacture}.${req.body.format}`, `Facture: F${lastnfacture}, Infos client: ${req.body.nom}, Date: ${date}, Prestation fournie:${req.body.presta}, Nombre d'heures facturées:${req.body.nbH}, Coût horaire:${req.body.ctH}, Coût total HT:${totalHT}, TVA:${req.body.boolTVA}, Taux de TVA:${req.body.tauxTVA}, Total TTC:${totalTTC} ---`, (err) => {
         if (err) {
             console.log(err);
         }
@@ -38,7 +53,7 @@ exports.createFacture = function (req,res) {
     //Création de la facture pour la BDD
     let facture = new Facture(
         {
-            nfacture: req.body.nfacture,
+            nfacture: lastnfacture,
             total_ttc: totalTTC
         }
     );
@@ -60,7 +75,7 @@ exports.createFacture = function (req,res) {
             console.log(err);
         }
     });
-    fs.appendFile('./log/log.log', `Date: ${date} -- Client: ${req.body.nom} **--**`, (err) => {
+    fs.appendFile('./log/log.log', `Date: ${date} -- Client: ${req.body.nom} ////////`, (err) => {
         if (err) {
             console.log(err);
         }
@@ -70,15 +85,16 @@ exports.createFacture = function (req,res) {
     });
 };
 
-//Fonction 4 le Chiffre d'affaire NON FONCTIONNEL
+//Fonction 4 le Chiffre d'affaire
 exports.getCA = function(req, res){
-Facture.find({}).exec(function (err, users) {
-    let n = Facture.size;
+Facture.find().exec(function (err, factures) {
+    // console.log(factures)
+    let n = factures.length;
     let CA = 0;
     for (let i = 0; i < n; i++) {
-        CA +=CA;
-        res.send(CA);
-        console.log(CA);
+        CA += factures[i].total_ttc;
     }
+    res.send(`Votre chiffre d'affaire est de ${CA} euros!`);
+    console.log(CA);
 })
 }
