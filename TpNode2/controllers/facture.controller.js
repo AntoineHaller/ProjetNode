@@ -19,21 +19,22 @@ exports.createFacture = function (req,res) {
 
     const fs = require('fs');
 
-    let lastnfacture = 2;
+    let lastnfacture = 1;
 
+    //A partir d'ici je vais créer la facture en commencant par récupérer la dernière créée.
     Facture.find().sort({ _id: -1 }).limit(1).exec(function (err, lastFacture) {
 
     lastnfacture = (lastFacture[0].nfacture) + 1;
 
-    console.log('Voici lastFacture[0]');
-    console.log(lastFacture[0]);
-    console.log('Voici lastFacture[0].nfacture');
-    console.log(lastFacture[0].nfacture);
-    console.log('Voici lastnfacture');
-    console.log(lastnfacture);
+    //TESTS
+    // console.log('Voici lastFacture[0]');
+    // console.log(lastFacture[0]);
+    // console.log('Voici lastFacture[0].nfacture');
+    // console.log(lastFacture[0].nfacture);
+    // console.log('Voici lastnfacture');
+    // console.log(lastnfacture);
 
-    });
-
+    
     //Création du dossier et du fichier RESTE A FAIRE L'INCREMENTATION DU NUMERO DE FACTURE
     fs.mkdir(`invoices/${req.body.nom}`, { recursive: true }, (err) => {
         if (err) {
@@ -83,6 +84,10 @@ exports.createFacture = function (req,res) {
             console.log('log créé')
         }
     });
+
+    });
+
+    
 };
 
 //Fonction 4 le Chiffre d'affaire
