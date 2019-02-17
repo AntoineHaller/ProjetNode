@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Commentaire</title>
+</head>
+<style>
+    input:checked + .commentaire2 { display: block !important; }
+</style>
+<body>
+
+
+<h1>Commentaire</h1>
+
+<form action="/commentaire" method="post">
+
+    Nom: <input type="text" name="nom">
+    <br>
+    Ecrivez votre note: <TEXTAREA name="commentaire" rows=4 cols=40>Ajoutez un commentaire...</TEXTAREA>
+    <br>
+    <br>
+
+    <label>Je veux faire un 2ème commentaire: </label>
+    <input type='checkbox'>
+    <div class="commentaire2" style="display: none">
+    Ecrivez votre note: <TEXTAREA name="commentaire2" rows=4 cols=40>Ajoutez un commentaire...</TEXTAREA></div>
+    <br>
+    <br>
+
+    Format de facture: <br>
+    TXT:<input checked="" type="radio" name="format" value="txt">
+    HTML:<input type="radio" name="format" value="html">
+    JSON:<input type="radio" name="format" value="json">
+    <br>
+
+    <input type="Submit" name="send">
+</form>
+
+</body>
+</html>
