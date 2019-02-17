@@ -40,7 +40,7 @@ exports.deleteCommentaire = function (req,res) {
 
 exports.showCommentaire = function (req,res) {
     const fs = require('fs');
-    const path = `../notes/${req.params.name}/notes.${req.params.format}`;
-    const contenu = fs.read(path);
+    const path = `./notes/${req.params.name}/notes.${req.params.format}`;
+    const contenu = fs.readFileSync(path, 'utf8');
     console.log(contenu)
 };
